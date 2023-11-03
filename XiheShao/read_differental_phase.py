@@ -4,9 +4,7 @@ Created on Fri Nov  3 17:25:26 2023
 
 @author: xihes2
 """
-import pandas as pd
-import math
-from scipy import signal
+
 import numpy as np
 import os
 
@@ -20,7 +18,8 @@ def three_bit(x):
         return str(x)
     
 # Main
-for No in range (0,140):
+# Set file number here!!!
+for No in range (0,2):
     # make new folder
     os.mkdir("./wave"+three_bit(No))
     
@@ -66,6 +65,5 @@ for No in range (0,140):
                 diff_Phase[:,txid, scid] -= 360
                 
             subcarrier_diff_phase=diff_Phase[:,txid,scid]
-            txt_name='0726wave_'+three_bit(No)+"_"+three_bit(scid)+".txt"
-    
-            np.savetxt(("./wave"+three_bit(No)+"/"+txt_name, subcarrier_diff_phase, fmt='%.8f')
+            txt_name='0726_'+three_bit(No)+"_"+three_bit(scid)+".txt"
+            np.savetxt("./wave"+three_bit(No)+"/"+txt_name, subcarrier_diff_phase, fmt='%.8f')
